@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 23% 95%;
+    --foreground: 220 16% 9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 16% 9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 16% 9%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 16% 9%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 8% 46%;
+
+    --accent: 142 71% 45%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.75rem;
+
+    /* Enhanced dark theme colors */
+    --consulting-dark: 222 47% 8%;
+    --consulting-darker: 222 47% 4%;
+    --consulting-primary: 221 83% 53%;
+    --consulting-primary-dark: 221 83% 43%;
+    --consulting-accent: 142 71% 45%;
+    --consulting-accent-bright: 142 76% 55%;
+    --consulting-surface: 220 26% 14%;
+    --consulting-surface-light: 220 20% 18%;
+    --consulting-surface-lighter: 220 16% 22%;
+    --consulting-text: 220 9% 89%;
+    --consulting-text-muted: 220 9% 65%;
+    --consulting-border: 220 20% 20%;
+    --consulting-border-light: 220 16% 25%;
+    
+    /* Enhanced gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--consulting-primary)), hsl(var(--consulting-accent)));
+    --gradient-primary-dark: linear-gradient(135deg, hsl(var(--consulting-primary-dark)), hsl(var(--consulting-accent)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--consulting-darker)), hsl(var(--consulting-dark)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--consulting-surface) / 0.9), hsl(var(--consulting-surface-light) / 0.6));
+    --gradient-card-hover: linear-gradient(145deg, hsl(var(--consulting-surface-light) / 0.95), hsl(var(--consulting-surface-lighter) / 0.8));
+    --gradient-glass: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    
+    /* Enhanced shadows */
+    --shadow-elegant: 0 20px 40px -12px hsl(var(--consulting-darker) / 0.4);
+    --shadow-card: 0 8px 32px -8px hsl(var(--consulting-darker) / 0.3);
+    --shadow-card-hover: 0 20px 64px -12px hsl(var(--consulting-darker) / 0.4);
+    --shadow-glow: 0 0 40px hsl(var(--consulting-primary) / 0.15);
+    --shadow-accent-glow: 0 0 40px hsl(var(--consulting-accent) / 0.15);
+    
+    /* Animation variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 220 9% 89%;
+
+    --card: 220 26% 14%;
+    --card-foreground: 220 9% 89%;
+
+    --popover: 220 26% 14%;
+    --popover-foreground: 220 9% 89%;
+
+    --primary: 221 83% 58%;
+    --primary-foreground: 222 47% 8%;
+
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 220 9% 89%;
+
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 9% 65%;
+
+    --accent: 142 76% 55%;
+    --accent-foreground: 222 47% 8%;
+
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 18%;
+    --ring: 221 83% 58%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-consulting-dark text-consulting-text antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Selection styling */
+  ::selection {
+    @apply bg-consulting-primary/20 text-consulting-text;
+  }
+  
+  /* Focus ring improvements */
+  :focus-visible {
+    @apply ring-2 ring-consulting-primary ring-offset-2 ring-offset-consulting-dark outline-none;
+  }
+}
+
+@layer components {
+  /* Glass morphism effect */
+  .glass-card {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--consulting-border));
+  }
+  
+  /* Enhanced card hover effects */
+  .hover-lift {
+    transition: var(--transition-smooth);
+    will-change: transform, box-shadow;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-card-hover);
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Animated underline */
+  .animated-underline {
+    @apply relative;
+  }
+  
+  .animated-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 scale-x-0 origin-left;
+    background: var(--gradient-primary);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .animated-underline:hover::after {
+    @apply scale-x-100;
+  }
+  
+  /* Loading shimmer */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--consulting-surface)) 0%,
+      hsl(var(--consulting-surface-light)) 50%,
+      hsl(var(--consulting-surface)) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
